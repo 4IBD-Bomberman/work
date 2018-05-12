@@ -1,0 +1,64 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/ecole travail/c++/work/IA/IA.cpp
+
+D:/ecole travail/c++/work/MJ/Bombe.cpp
+Bombe.h
+D:/ecole travail/c++/work/MJ/Bombe.h
+
+D:/ecole travail/c++/work/MJ/Bombe.h
+Case.h
+D:/ecole travail/c++/work/MJ/Case.h
+
+D:/ecole travail/c++/work/MJ/Case.cpp
+Case.h
+D:/ecole travail/c++/work/MJ/Case.h
+
+D:/ecole travail/c++/work/MJ/Case.h
+
+D:/ecole travail/c++/work/MJ/Item.cpp
+Item.h
+D:/ecole travail/c++/work/MJ/Item.h
+
+D:/ecole travail/c++/work/MJ/Item.h
+Case.h
+D:/ecole travail/c++/work/MJ/Case.h
+
+D:/ecole travail/c++/work/MJ/MJ.cpp
+
+D:/ecole travail/c++/work/MJ/Mur.cpp
+Mur.h
+D:/ecole travail/c++/work/MJ/Mur.h
+
+D:/ecole travail/c++/work/MJ/Mur.h
+Case.h
+D:/ecole travail/c++/work/MJ/Case.h
+
+D:/ecole travail/c++/work/MJ/Plateau.cpp
+Plateau.h
+D:/ecole travail/c++/work/MJ/Plateau.h
+
+D:/ecole travail/c++/work/MJ/Plateau.h
+Case.h
+D:/ecole travail/c++/work/MJ/Case.h
+Bombe.h
+D:/ecole travail/c++/work/MJ/Bombe.h
+Mur.h
+D:/ecole travail/c++/work/MJ/Mur.h
+Item.h
+D:/ecole travail/c++/work/MJ/Item.h
+iostream
+-
+time.h
+-
+cstdlib
+-
+map
+-
+

@@ -26,10 +26,12 @@ private:
 	void initTourTab();
 	void initMillieuTab();
 	void initMurDestructible();
+	bool isOKToPutJoeurICI(int x, int y, char * tabC); //c'est Charlotte qui a mis ce nom de merde
 public:
 	Plateau(const int l, const int h);
 	virtual ~Plateau();
 	friend std::ostream& operator<<(std::ostream& ostr, const Plateau& p);
+
 
 };
 
