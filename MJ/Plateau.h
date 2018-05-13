@@ -18,7 +18,7 @@
 
 class Plateau {
 private:
-	Case** tab;
+	Case*** tab;
 	int X;
 	int Y;
 

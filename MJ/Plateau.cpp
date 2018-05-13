@@ -7,70 +7,73 @@
 
 #include "Plateau.h"
 
-Plateau::Plateau(const int l, const int h) : X(l), Y(h) {
-    tab = new Case *[l * h];
-    for (int i = 0; i < X * Y; i++) {
-        tab[i] = new Case();
-    }
-    initTab();
+Plateau::Plateau(const int l,const int h ): X(l), Y(h) {
+        tab = new Case**[l];
+        for(int i = 0; i < l; ++i){
+                tab[i] = new Case*[h];
+                for(int j = 0; j <h ; ++j){
+                        tab[i][j] = new Case();
+                }
+        }
+        initTab();
 }
 
 Plateau::~Plateau() {
-    delete[] tab;
+        delete[] tab;
 }
 
-void Plateau::initTab() {
-    initTourTab();
-    initMillieuTab();
-    initMurDestructible();
+void Plateau::initTab(){
+        initTourTab();
+        initMillieuTab();
+        initMurDestructible();
 }
 
-void Plateau::initTourTab() {
-    // 1er ligne
-    for (int i = 0; i < X; i++) {
-        tab[i] = new Mur(false);
-    }
-    // 1er col et derniere col
-    for (int i = X; i < X * (Y - 1); i += X) {
-        tab[i] = new Mur(false);
-        tab[i + X - 1] = new Mur(false);
-    }
-    //derniere ligne
-    for (int i = X * (Y - 1); i < X * Y; i++) {
-        tab[i] = new Mur(false);
-    }
-}
-
-void Plateau::initMillieuTab() {
-    for (int j = 2; j < Y - 2; j += 2) {
-        for (int i = X * j; i < X * (j + 1); i += 2) {
-            tab[i] = new Mur(false);
+void Plateau::initTourTab(){
+        // 1er ligne
+        for(int i = 0; i<X; i++){
+                tab[i][0] = new Mur(false);
         }
-    }
+        // 1er col et derniere col
+        for(int i = 1; i<Y-1; i++){
+                tab[0][i] = new Mur(false);
+                tab[X-1][i] = new Mur(false);
+        }
+        //derniere ligne
+        for(int i = 0; i< X; i++){
+                tab[i][Y-1] = new Mur(false);
+        }
 }
 
-void Plateau::initMurDestructible() {
-    srand(time(NULL));
-    int nbMur = (X * Y) * 0.2;
-    for (int i = 0; i < nbMur; i++) {
-        int x = rand() % X;
-        int y = rand() % Y;
-        if (tab[y * X + x]->getCharAffichage() == '_') {
-            tab[y * X + x] = new Mur(true);
-        } else {
-            i--;
+void Plateau::initMillieuTab(){
+        for (int i = 2; i < X-2 ; i+=2){
+                for (int j= 2; j<Y-2; j+=2){
+                        tab[i][j] = new Mur(false);
+                }
         }
-    }
 }
 
-std::ostream &operator<<(std::ostream &ostr, const Plateau &p) {
-    for (int i = 0; i < p.Y; i++) {
-        for (int j = 0; j < p.X; j++) {
-            ostr << p.tab[i * p.X + j]->getCharAffichage() << " ";
+void Plateau::initMurDestructible(){
+        srand(time(NULL));
+        int nbMur = (X*Y)*0.2;
+        for (int i = 0; i<nbMur; i++) {
+                int x=rand()%X;
+                int y=rand()%Y;
+                if (tab[x][y]->getCharAffichage() == '_'){
+                        tab[x][y] = new Mur(true);
+                }else {
+                        i--;
+                }
         }
-        ostr << std::endl;
-    }
-    return ostr;
+}
+
+std::ostream& operator<<(std::ostream& ostr, const Plateau& p){
+        for(int i=0; i<p.X; i++){
+                for (int j=0; j<p.Y; j++){
+                        ostr << p.tab[i][j]->getCharAffichage() << " ";
+                }
+                ostr << std::endl;
+        }
+        return ostr;
 }
 
 bool Plateau::isOKToPutJoeurICI(int x, int y, char *tabC) {
