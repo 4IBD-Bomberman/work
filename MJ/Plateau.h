@@ -15,6 +15,7 @@
 #include <time.h>
 #include <cstdlib>
 #include <map>
+#include <utility>
 
 class Plateau {
 private:
@@ -26,6 +27,7 @@ private:
 	void initTourTab();
 	void initMillieuTab();
 	void initMurDestructible();
+	std::pair<int,int> getDirPosition(int x, int y, char dir);
 	bool isOKToPutJoeurICI(int x, int y, char * tabC); //c'est Charlotte qui a mis ce nom de merde
 public:
 	Plateau(const int l, const int h);

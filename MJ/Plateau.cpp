@@ -66,6 +66,23 @@ void Plateau::initMurDestructible(){
         }
 }
 
+std::pair<int,int> Plateau::getDirPosition(int x, int y, char dir){
+        if (!isTor){
+                if(dir == 'G') return std::make_pair(x-1, y);
+                else if (dir == 'D') return std::make_pair(x+1, y);
+                else if (dir == 'H') return std::make_pair(x, y+1);
+                else if (dir == 'B') return std::make_pair(x, y-1);
+                else return std::make_pair(-1, -1);
+        }
+        else{
+                if(dir == 'G') return std::make_pair(x-1 >=0? x-1: X-1, y);
+                else if (dir == 'D') return std::make_pair(x+1<X? x+1:0, y);
+                else if (dir == 'H') return std::make_pair(x, y+1<Y? y+1:0);
+                else if (dir == 'B') return std::make_pair(x, y-1>=0? y-1: Y-1);
+                else return std::make_pair(-1, -1);
+        }
+}
+
 std::ostream& operator<<(std::ostream& ostr, const Plateau& p){
         for(int i=0; i<p.X; i++){
                 for (int j=0; j<p.Y; j++){
